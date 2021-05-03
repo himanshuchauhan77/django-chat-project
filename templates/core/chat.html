@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="container" >
+        <!-- Side navigation -->
+<div class="sidenav" >
+    <a style="pointer-events: none"><b>Online Users</b></a>
+    <div id="user-list">
+    <div id="online-user"></div>
+    </div>
+    <br>
+    <a style="pointer-events: none"><b>Offline Users</b></a>
+    <div id="offline-user"></div>
+    </div>
+</div>
+
+<!-- Page content -->
+<div class="main">
+                    <div>
+                        <ul id="messages" class="messages">
+                            {# Messages go here #}
+                        </ul>
+                    <div class="panel-footer">
+                        <div class="input-group">
+                            <input id="chat-input" type="text"
+                                   class="form-control input"
+                                   placeholder="Type your message here ..."
+                                   maxlength="500">
+                            <span class="input-group-btn">
+                            <button class="btn btn-info btn"
+                                    id="btn-send">
+                                Send</button>
+                        </span>
+                        </div>
+                    </div>
+                    </div>
+    </div>
+</div>
+    <script>
+        let sessionKey = '{{ request.session.session_key }}';
+        let currentUser = '{{ request.user.username }}';
+    </script>
+    <script src="{% static 'js/app.js' %}"></script>
+
+{% endblock %}
